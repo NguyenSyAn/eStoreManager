@@ -1,0 +1,4 @@
+Role			Login	ChangePwd	ManageCustomers	ManageSuppliers	ManageProducts	ImportProducts	ManageFinance	ManageEmployees	CreateReports	CopyBill	DeleteBill	ReturnProducts	Sell
+Administrator 		1	1		1		1		1		1		1		1		1		1		1		1		1
+Cashier 		1	1		1		0		0		0		0		0		0		1		1		1		1
+WarehouseManager 	1	1		0		1		1		1		0		0		0		0		0		0		0

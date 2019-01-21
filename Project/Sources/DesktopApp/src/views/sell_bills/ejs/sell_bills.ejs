@@ -1,0 +1,29 @@
+<%- include('../../shared/ejs/header', {title: gettext.sell_bills}) %>
+<link rel="stylesheet" href="../../../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+
+<%- include('../../shared/ejs/secondary_menu.ejs') %>
+
+<div class="container">
+    <h2 class="text-left" style="text-transform: uppercase; padding-top: 1rem; padding-bottom: 0.5rem">
+        &gt;&gt; <%= gettext.sell_bills %>
+    </h2>
+</div>
+
+<div class="container">
+    <%- include('../../shared/ejs/datepicker_optional.ejs') %>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="realtime" class="display" width="100%"></table>
+        </div>
+    </div>
+</div>
+
+<script src="../js/sell_bills.js"></script>
+
+<style>
+    input[type="search"] {
+        border-bottom: 1px solid #999;
+    }
+</style>
+
+<%- include('../../shared/ejs/footer') %>

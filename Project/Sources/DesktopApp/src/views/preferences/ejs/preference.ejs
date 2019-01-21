@@ -1,0 +1,154 @@
+<%- include('../../shared/ejs/header', {title: gettext.preferences}) %>
+<link rel="stylesheet" type="text/css" href="../css/preferences.css">
+
+<div id="saved" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title"><%= gettext.notification %></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p><%= gettext.all_settings_were_saved %></p>
+            <p id="warning-restart-update-language"><%= gettext.you_have_to_restart_app_to_change_language %></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= gettext.close %></button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <img src="../images/settings.png" style="height: 4rem; width: 4rem">
+    <h1><%= gettext.preferences %></h1>
+
+    <div class="col-sm-12 order-md-1">
+       
+        <div>
+
+            <hr class="mb-2">
+
+            <h4><%= gettext.server_connection %></h4>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="http" name="api-protocol" type="radio" class="custom-control-input" checked required>
+                            <label class="custom-control-label" for="http">http</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="https" name="api-protocol" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="https">https</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label for="api-hostname"><%= gettext.hostname %></label>
+                    <input type="text" class="form-control" id="api-hostname" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-5">
+                    <label for="api-port"><%= gettext.port %></label>
+                    <input type="text" class="form-control" id="api-port" placeholder="" value="" required>
+                </div>
+            </div>
+
+            <hr class="mb-2">
+
+            <div class="form-group">
+                <label for="language-selector"><%= gettext.application_language %></label>
+                <select class="form-control" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="fr">Le français</option>
+                </select>
+            </div>
+
+            <hr class="mb-2">
+
+            <h4><%= gettext.store_information %></h4>
+            <div class="row">
+                <div class="col-sm-8">
+                    <label for="store-name"><%= gettext.store_name %></label>
+                    <input type="text" class="form-control" id="store-name" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-8">
+                    <label for="store-address"><%= gettext.store_address %></label>
+                    <input type="text" class="form-control" id="store-address" placeholder="" value="" required>
+                </div>
+            </div>
+            
+
+            <!-- <hr class="mb-2">
+
+            <h4>Application</h4>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="start-on-boot">
+                <label class="custom-control-label" for="start-on-boot"> Start on boot.</label>
+                <button class="btn btn-warning">Create Desktop shortcut</button>
+            </div> -->
+
+            <hr class="mb-2">
+            
+            <button class="btn btn-primary btn-lg btn-block" id="save"><%= gettext.save_settings %></button>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+    const settings = require('electron-settings');
+
+    // Get current settings
+    let hostname = settings.get('api_config.hostname');
+    let port = settings.get('api_config.port');
+    let protocol = settings.get('api_config.protocol');
+    let storeName = settings.get('store_info.name');
+    let storeAddress = settings.get('store_info.address');
+    let language = settings.get('lang');
+    let startOnBoot = settings.get('app_settings.startonboot');
+
+    // Display current settings
+    if (protocol === "http") {
+        $('#http').prop('checked', true);
+    } else {
+        $('#https').prop('checked', true);
+    }
+    
+    $("#api-hostname").val(hostname);
+    $("#api-port").val(port);
+    $("#store-name").val(storeName);
+    $("#store-address").val(storeAddress);
+    $("#start-on-boot").prop('checked', startOnBoot);
+    $("#language-selector").val(language);
+
+    console.log(language);
+
+    // Handle save button
+    $("#save").click(function() {
+        settings.set('api_config.hostname', $("#api-hostname").val());
+        settings.set('api_config.port', $("#api-port").val());
+        settings.set('store_info.name', $("#store-name").val());
+        settings.set('store_info.address', $("#store-address").val());
+        settings.set('app_settings.startonboot', $("#start-on-boot").prop('checked'));
+        settings.set('api_config.protocol', $('input[name="api-protocol"]:checked')[0].id);
+        settings.set('lang', $("#language-selector").val());
+
+        // If user changed the language, warn them to restart the application
+        if (language != $("#language-selector").val()) {
+            $("#warning-restart-update-language").show();
+        } else {
+            $("#warning-restart-update-language").hide();
+        }
+
+        $('#saved').modal();
+        
+    });
+
+</script>
+
+
+<%- include('../../shared/ejs/footer') %>

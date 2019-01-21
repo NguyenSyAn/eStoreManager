@@ -1,0 +1,214 @@
+<%- include('../../shared/ejs/header', {title: gettext.employee_management}) %>
+<link rel="stylesheet" type="text/css" href="../css/employees.css">
+<!-- <link rel="stylesheet" href="../../../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css"> -->
+
+
+<%- include('../../shared/ejs/secondary_menu.ejs') %>
+
+<div class="container">
+    <h2 class="text-left" style="text-transform: uppercase; padding-top: 1rem; padding-bottom: 0.5rem">
+        &gt;&gt; <%= gettext.employee_management %>
+    </h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="margin-bottom: 3rem;padding: 0;">
+                <button class="btn btn-success float-right" id="add-employee"><%= gettext.add_employee %></button>
+            </div>
+            <table id="realtime" class="display" width="100%"></table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var dataSet = [
+        [ "", "", "", "", "", "", "", ""]
+    ];
+
+    
+    const app = {
+        rows: [],
+        dataTable: null,
+        selectedUser: null,
+        updateTable(dataTable, data) {
+            console.log(data);
+            this.rows = [];
+            for (let i = 0; i < data.length; ++i) {
+                let row = [];
+                row.push(Number(data[i].id));
+                // { title: 'Name' },
+                row.push(String(data[i].name));
+                // { title: 'Username' },
+                row.push(String(data[i].username));
+                // { title: 'Salary' },
+                row.push(String(data[i].salary));
+                // { title: 'Email' },
+                row.push(String(data[i].email));
+                // { title: 'Address' },
+                row.push(String(data[i].address));
+                // { title: 'Mobile' },
+                row.push(String(data[i].mobileNo));
+                // { title: 'Position' },
+                row.push(Array(data[i].roles).join(","));
+                this.rows.push(row);
+                // console.log(row);
+            }
+            dataTable.clear();
+            dataTable.rows.add(this.rows);
+            dataTable.draw(false);
+        },
+        deleteFromTable(id) {
+            for (let i = 0; i < this.rows.length; ++i) {
+                if (this.rows[i][0] == id) {
+                    this.rows.splice(i, 1);
+                    break;
+                }
+            }
+            dataTable.clear();
+            dataTable.rows.add(this.rows);
+            dataTable.draw(false);
+        },
+        start() {
+
+            // Load libraries
+            const EventGetter = require("../../../services/EventGetter").EventGetter;
+            const TextGetter = require("../../../services/TextGetter").TextGetter;
+            const {ipcRenderer} = require('electron');
+            var dt = require( 'datatables.net-dt' )( window, $ );
+            require( 'datatables.net-responsive-dt' )( window, $ );
+
+            // Handle add employee
+            $("#add-employee").click(() => {
+                ipcRenderer.send(EventGetter.get('request_add_employee'));
+            });
+
+            // Create table 
+            dataTable = $('#realtime').DataTable({
+                responsive: true,
+                data: dataSet,
+                columns: [
+                    { title: TextGetter.get("user_id") },
+                    { title: TextGetter.get("name") },
+                    { title: TextGetter.get("username") },
+                    { title: TextGetter.get("salary") },
+                    { title: TextGetter.get("email") },
+                    { title: TextGetter.get("address") },
+                    { title: TextGetter.get("mobile") },
+                    { title: TextGetter.get("position") },
+                    { title: TextGetter.get("manipulation") }
+                ],
+                "columnDefs": [ {
+                    "targets": -1,
+                    "data": null,
+                    "defaultContent": `
+                            <button type="button" class="edit-employee btn btn-sm btn-success">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button>&nbsp;
+                            <button type="button" class="delete-employee btn btn-sm btn-danger">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="set-password btn btn-sm btn-warning">
+                                `+TextGetter.get("set_password")+`
+                            </button>
+                        `
+                } ],
+                "responsive": true,
+                "pageLength": 5,
+                "lengthMenu": [[5, 8, 10, -1], [5, 8, 10, "All"]]
+            });
+
+            // ==== Update data of the table ====
+            // Request data
+            ipcRenderer.send(EventGetter.get("request_update_employee_list"));
+            // Update list
+            ipcRenderer.on(EventGetter.get("update_employee_list"), (event, data) => {
+                this.updateTable(dataTable, data);
+            });
+            ipcRenderer.on(EventGetter.get('add_employee_success'), (event) => {
+                ipcRenderer.send(EventGetter.get("request_update_employee_list"));
+            });
+
+            // Delete a value by id: Id means the value of the first column
+            ipcRenderer.on(EventGetter.get("delete_row_from_employee_table"), (event, id) => {
+                this.deleteFromTable(id);
+            });
+
+            // ==== Handle row buttons ====
+            // Delete
+            $('#realtime tbody').on( 'click', 'button.delete-employee', function () {
+                let data = dataTable.row( $(this).parents('tr') ).data();
+                let userData = {};
+                userData.id = data[0];
+                userData.username = data[2];
+                ipcRenderer.send(EventGetter.get("request_delete_employee"), userData);
+            } );
+            // Change password
+            $('#realtime tbody').on( 'click', 'button.set-password', function () {
+                let data = dataTable.row( $(this).parents('tr') ).data();
+                
+                // Request password for user
+                let passwordCarrier = {}
+                passwordCarrier.purpose = "set_user_password";
+                passwordCarrier.id = data[0];
+                ipcRenderer.send(EventGetter.get('prompt_password'), passwordCarrier);
+
+            } );
+            // Listening for a change password event
+            ipcRenderer.on(EventGetter.get("set_password"), (event, passwordCarrier) => {
+                // Check purpose of this password
+                if (passwordCarrier.purpose == "set_user_password") {
+                    ipcRenderer.send(EventGetter.get("request_change_user_password"), passwordCarrier);
+                }
+            });
+
+
+            // Edit info
+            $('#realtime tbody').on( 'click', 'button.edit-employee', function () {
+                let data = dataTable.row( $(this).parents('tr') ).data();
+                
+                // Request password for user
+                let user = {}
+                user.id = data[0];
+                user.name = data[1];
+                user.username = data[2];
+                user.salary = data[3];
+                user.email = data[4];
+                user.address = data[5];
+                user.mobile = data[6];
+                user.roles = data[7];
+                // { title: 'UserID' },
+                // { title: 'Name' },
+                // { title: 'Username' },
+                // { title: 'Salary' },
+                // { title: 'Email' },
+                // { title: 'Address' },
+                // { title: 'Mobile' },
+                // { title: 'Position' },
+                // { title: 'Manipulation' }
+                ipcRenderer.send(EventGetter.get('request_update_user_info'), user);
+
+            } );
+
+            
+
+            
+        }
+    };
+
+    $(document).ready(() =>  {
+        app.start();
+    });
+</script>
+
+<style>
+    input[type="search"] {
+        border-bottom: 1px solid #999;
+    }
+</style>
+
+<%- include('../../shared/ejs/footer') %>

@@ -1,0 +1,58 @@
+<%- include('../../shared/ejs/header', {title: gettext.view_sell_bill}) %>
+<link rel="stylesheet" href="../../../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+
+<div class="container">
+    <h2 class="text-left" style="text-transform: uppercase; padding-top: 1rem; padding-bottom: 0.5rem">
+        &gt;&gt; <%= gettext.view_sell_bill %>
+        <span id="status-completed" class="badge badge-success" style="display:none"><%= gettext.completed %></span>
+        <span id="status-discarded" class="badge badge-warning" style="display:none"><%= gettext.discarded %></span>
+    </h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="created_by"><%= gettext.created_by %></label>
+                <input readonly disabled type="text" name="created_by" id="created_by" placeholder="" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="created_at"><%= gettext.created_at %></label>
+                <input readonly disabled type="text" name="created_at" id="created_at" placeholder="" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="customer"><%= gettext.customer %></label>
+                <input readonly disabled type="text" name="customer" id="customer" placeholder="" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="grandtotal"><%= gettext.grand_total %></label>
+                <input readonly disabled type="text" name="grandtotal" id="grandtotal" placeholder="" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="realtime" class="display" width="100%"></table>
+        </div>
+        <div class="col-md-12 pt-3">
+            <button id="btn-close" class="btn btn-primary btn-lg" style="width: 100%; text-transform: uppercase"><%= gettext.close %></button>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/view_sell_bill.js"></script>
+
+<style>
+    input[type="search"] {
+        border-bottom: 1px solid #999;
+    }
+</style>
+
+<%- include('../../shared/ejs/footer') %>

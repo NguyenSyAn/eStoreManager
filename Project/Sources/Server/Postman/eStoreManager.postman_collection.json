@@ -1,0 +1,1586 @@
+{
+	"info": {
+		"_postman_id": "ee2ce5f5-25e2-4062-8179-2d2aba040119",
+		"name": "eStoreManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save version 1",
+			"item": [
+				{
+					"name": "User Management",
+					"item": [
+						{
+							"name": "User login his own account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"admin\",\n    \"password\": \"admin@gmail.com\"\n}\n"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								},
+								"description": "user login"
+							},
+							"response": []
+						},
+						{
+							"name": "User get his own information",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODMxNjY5LCJleHAiOjE1NDQ0MzY0Njl9.gGNlf0cRUjfggi-BlDZcJLEvyIGlj3J8GEfE-9sfof_pKct3Rxbjp1ALVAuTj8EDFFOW-7s9HOcU9sbJMMsHxQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"me"
+									]
+								},
+								"description": "User get his own profile"
+							},
+							"response": []
+						},
+						{
+							"name": "User update his own information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODE2Nzk0LCJleHAiOjE1NDQ0MjE1OTR9.Y6m3t8EHXt-oLJWVfGjVhtnbSU-6P56xtWzjGcTDmVbGNXE34gPNIRygAB-rUhzTDForOmiQD_s7MnKnS7k7KQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Admin dep trai\",\n    \"username\": \"admin\",\n    \"email\": \"admin@gmail.com\",\n    \"address\": \"Hanoi\",\n    \"mobileNo\": \"0917915518\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"me"
+									]
+								},
+								"description": "User update his own information"
+							},
+							"response": []
+						},
+						{
+							"name": "User change his own password",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODE2Nzk0LCJleHAiOjE1NDQ0MjE1OTR9.Y6m3t8EHXt-oLJWVfGjVhtnbSU-6P56xtWzjGcTDmVbGNXE34gPNIRygAB-rUhzTDForOmiQD_s7MnKnS7k7KQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"oldPassword\": \"admin@gmail.com\",\n\t\"newPassword\": \"admin@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/me/change_password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"me",
+										"change_password"
+									]
+								},
+								"description": "User change his own password"
+							},
+							"response": []
+						},
+						{
+							"name": "User delete his own account",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTQzNTA4MzQ4LCJleHAiOjE1NDQxMTMxNDh9.E6bSg3WqXIYb14Kn4EZqEfpowM4JuHH8hQFoG3n4gpypP0WH_xX0DAzhEq4sZx5pvG4midpMxoZbZVYIbhNWIw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"me"
+									]
+								},
+								"description": "User delete his own account"
+							},
+							"response": []
+						},
+						{
+							"name": "Admin create new account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzNzE3MTEzLCJleHAiOjE1NDQzMjE5MTN9.mFCP60TluAfIq64tlLgb1_kETjgXak2OcU55YkO7segAMQ-spjF_r2G7SDkBVEF1fEhz80QciiZ4ItZs1MXlVg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"cashier\",\r\n    \"username\": \"cashier\",\r\n    \"password\": \"cashier@password\",\r\n    \"salary\": 10,\r\n    \"email\": \"cashier@gmail.com\",\r\n    \"address\": \"hoa binh\",\r\n    \"mobileNo\": \"09784569\",\r\n    \"roles\": [\r\n\t\t\"ROLE_MANAGER\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								},
+								"description": "Admin get user information by user_id"
+							},
+							"response": []
+						},
+						{
+							"name": "Admin get user information by user id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODE2Nzk0LCJleHAiOjE1NDQ0MjE1OTR9.Y6m3t8EHXt-oLJWVfGjVhtnbSU-6P56xtWzjGcTDmVbGNXE34gPNIRygAB-rUhzTDForOmiQD_s7MnKnS7k7KQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin update user information by user id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODE2Nzk0LCJleHAiOjE1NDQ0MjE1OTR9.Y6m3t8EHXt-oLJWVfGjVhtnbSU-6P56xtWzjGcTDmVbGNXE34gPNIRygAB-rUhzTDForOmiQD_s7MnKnS7k7KQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"manager\",\n    \"username\": \"manager\",\n    \"password\": \"manager@gmail.com\",\n    \"salary\": 10,\n    \"email\": \"manager@gmail.com\",\n    \"address\": \"hoa binh\",\n    \"mobileNo\": \"09784569\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin get all user summary informations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODMxNjY5LCJleHAiOjE1NDQ0MzY0Njl9.gGNlf0cRUjfggi-BlDZcJLEvyIGlj3J8GEfE-9sfof_pKct3Rxbjp1ALVAuTj8EDFFOW-7s9HOcU9sbJMMsHxQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin delete user by user id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzNTEwMzEwLCJleHAiOjE1NDQxMTUxMTB9.RE9IFVDf6Oci4HjTEq1J4JufMcu6dbvm0Myn08kDbXXtrjvR-_6WPrQEEum7IXsuvnHC0HAQxCflmFnNPDC9PQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/3?",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"3"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Customer Management",
+					"item": [
+						{
+							"name": "Admin, Cashier create a new customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"customer4\",\r\n    \"email\": \"customer4@gmail.com\",\r\n    \"address\": \"hai phong\",\r\n    \"mobileNo\": \"0324234423\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier get all customers' informations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzNTEwMzEwLCJleHAiOjE1NDQxMTUxMTB9.RE9IFVDf6Oci4HjTEq1J4JufMcu6dbvm0Myn08kDbXXtrjvR-_6WPrQEEum7IXsuvnHC0HAQxCflmFnNPDC9PQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customers?page=0&size=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier search customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODMxNjY5LCJleHAiOjE1NDQ0MzY0Njl9.gGNlf0cRUjfggi-BlDZcJLEvyIGlj3J8GEfE-9sfof_pKct3Rxbjp1ALVAuTj8EDFFOW-7s9HOcU9sbJMMsHxQ"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draw\": 1,\r\n    \"start\": 0,\r\n    \"length\": 5,\r\n    \"search\": {\r\n        \"value\": \"customer2\",\r\n        \"regex\": false\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/search/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"search",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier get a customer's information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzNTA1MzI3LCJleHAiOjE1NDQxMTAxMjd9.qMjEyDcJlJhTDF8KL6XZ5uuqlTwZ7iIYe1_w5K8IdE7ivYYu_JiQLNL4qTZWO4EyIgVpr094X6OveW7ACtsCCg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier update a customer's information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzNTA1MzI3LCJleHAiOjE1NDQxMTAxMjd9.qMjEyDcJlJhTDF8KL6XZ5uuqlTwZ7iIYe1_w5K8IdE7ivYYu_JiQLNL4qTZWO4EyIgVpr094X6OveW7ACtsCCg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"customer1\",\r\n    \"email\": \"customer1@gmail.com\",\r\n    \"address\": \"hoa binh\",\r\n    \"mobileNo\": \"0916167997\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier delete a customer",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzNzE3MTEzLCJleHAiOjE1NDQzMjE5MTN9.mFCP60TluAfIq64tlLgb1_kETjgXak2OcU55YkO7segAMQ-spjF_r2G7SDkBVEF1fEhz80QciiZ4ItZs1MXlVg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customers/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customers",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Supplier Management",
+					"item": [
+						{
+							"name": "Admin, Manager create a new supplier",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODMxNjY5LCJleHAiOjE1NDQ0MzY0Njl9.gGNlf0cRUjfggi-BlDZcJLEvyIGlj3J8GEfE-9sfof_pKct3Rxbjp1ALVAuTj8EDFFOW-7s9HOcU9sbJMMsHxQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"vina\",\n    \"email\": \"vina@gmail.com\",\n    \"address\": \"ha noi\",\n    \"mobileNo\": \"0324129032\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/suppliers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier search suppliers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draw\": 1,\r\n    \"start\": 0,\r\n    \"length\": 5,\r\n    \"search\": {\r\n        \"value\": \"sup\",\r\n        \"name\": \"\",\r\n        \"email\": \"\",\r\n        \"address\": \"\",\r\n        \"mobileNo\": \"\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/search/suppliers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"search",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier get a supplier's information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/suppliers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"suppliers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier update a supplier's information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"supplier\",\r\n    \"email\": \"supplier@gmail.com\",\r\n    \"address\": \"ha noi\",\r\n    \"mobileNo\": \"095649879865\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/suppliers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"suppliers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier delete a customer",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzMzQ3NDY5LCJleHAiOjE1NDM5NTIyNjl9.RRG69WZ9JHz6h1UjBHciOVB6SlLzadoEwP1E5gd69tQTFB7ls5oZ4zXonNEzSzhhkDsUdCeLkMiU6vv4AoAk-w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/suppliers/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"suppliers",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Product Management",
+					"item": [
+						{
+							"name": "Admin, Manager create a new product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"chocolate\",\r\n    \"price\": 80000,\r\n    \"unit\": \"cartoon\",\r\n    \"barcode\": \"dccf2351\",\r\n    \"quantities\": 500\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier search products",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draw\": 1,\r\n    \"start\": 0,\r\n    \"length\": 10,\r\n    \"search\": {\r\n        \"value\": \"\",\r\n        \"name\": \"\",\r\n        \"unit\": \"\",\r\n        \"barcode\": \"\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/search/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"search",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier get a product's information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier update a product's information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"milk\",\n    \"price\": 85000,\n    \"unit\": \"bar\",\n    \"barcode\": \"df32xv34\",\n    \"quantities\": 100\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier delete a product",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzMzQ3NDY5LCJleHAiOjE1NDM5NTIyNjl9.RRG69WZ9JHz6h1UjBHciOVB6SlLzadoEwP1E5gd69tQTFB7ls5oZ4zXonNEzSzhhkDsUdCeLkMiU6vv4AoAk-w"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/products/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Buy Management",
+					"item": [
+						{
+							"name": "Admin, Manager create a new buy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"buy_items\": [\n\t\t{\n\t\t\t\"product_id\": 1,\n\t\t\t\"supplier_id\": 1,\n\t\t\t\"price\": 15,\n\t\t\t\"quantities\": 1\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/buys",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"buys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Manager search buys",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"draw\": 1,\n    \"start\": 0,\n    \"length\": 10,\n    \"search\": {\n    \t\"user_id\": 1,\n        \"start\": \"2018-01-30 06:52:05\",\n        \"end\": \"2018-12-30 06:52:08\"\n    }\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/search/buys",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"search",
+										"buys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Manager get a buy's information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/buys/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"buys",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Manager update a buy's information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 3,\n    \"active\": false,\n    \"buy_items\": [\n        {\n            \"product_id\": 1,\n            \"supplier_id\": 2,\n            \"price\": 100,\n            \"quantities\": 18\n        },\n        {\n            \"product_id\": 3,\n            \"supplier_id\": 10,\n            \"price\": 10,\n            \"quantities\": 150\n        },\n        {\n            \"product_id\": 4,\n            \"supplier_id\": 1,\n            \"price\": 970,\n            \"quantities\": 100\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/buys/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"buys",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin delete a buy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/buys/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"buys",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sell Management",
+					"item": [
+						{
+							"name": "Admin, Cashier create a new sell",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customer_id\": 1,\n    \"tax\": 10.2,\n    \"total\": 0,\n    \"sell_items\": [\n        {\n            \"product_id\": 1,\n            \"price\": 0,\n            \"quantities\": 200\n        },\n        {\n            \"product_id\": 1,\n            \"price\": 0,\n            \"quantities\": 5\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/sells",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"sells"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier search sells",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODQzMDUyLCJleHAiOjE1NDQ0NDc4NTJ9.tSJrcs6Gp7hWYPyMEdhMxC7nkak9JlgnjwjKkbM4uGFOSuxLBwkgBvhnhjWhLN4KuqqBbzuG0Z1-U-QjJCgz9g"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"draw\": 1,\r\n        \"start\": 0,\r\n        \"length\": 10,\r\n        \"search\": {\r\n            \"user_id\": 1,\r\n            \"customer_id\": 1,\r\n            \"start\": \"2018-01-30 06:52:05\",\r\n            \"end\": \"2018-12-05 06:52:08\"\r\n        }\r\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/search/sells",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"search",
+										"sells"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier get a sell's information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/sells/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"sells",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier update a sell's information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 2,\n    \"customer_id\": 1,\n    \"tax\": 0,\n    \"active\": true,\n    \"total\": 3300,\n    \"sell_items\": [\n        {\n            \"product_id\": 1,\n            \"supplier_id\": 2,\n            \"price\": 100,\n            \"quantities\": 18\n        },\n        {\n            \"product_id\": 3,\n            \"supplier_id\": 10,\n            \"price\": 10,\n            \"quantities\": 150\n        },\n        {\n            \"product_id\": 4,\n            \"supplier_id\": 1,\n            \"price\": 0,\n            \"quantities\": 100\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/sells/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"sells",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin delete a sell",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/sells/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"sells",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invoice Management",
+					"item": [
+						{
+							"name": "Admin, Manager create a new invoice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODMxNjY5LCJleHAiOjE1NDQ0MzY0Njl9.gGNlf0cRUjfggi-BlDZcJLEvyIGlj3J8GEfE-9sfof_pKct3Rxbjp1ALVAuTj8EDFFOW-7s9HOcU9sbJMMsHxQ"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 2000,\n    \"purpose\": \"2\",\n    \"description\": \"two\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/invoices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"invoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier search invoice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draw\": 1,\r\n    \"start\": 0,\r\n    \"length\": 5,\r\n    \"search\": {\r\n        \"purpose\": \"\",\r\n        \"description\": \"\",\r\n        \"start\": \"2018-01-30 06:52:05\",\r\n        \"end\": \"2018-12-30 06:52:05\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/search/invoices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"search",
+										"invoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier get an invoice's information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/invoices/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"invoices",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier update an invoice's information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 10000.5,\n    \"purpose\": \"1\",\n    \"description\": \"one\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/invoices/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"invoices",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin, Cashier delete an invoice",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzOTAwMzgxLCJleHAiOjE1NDQ1MDUxODF9.RwbVOzKpni79k4FlBr9WzFT5hgNUaU_rOY-CQSeozmQ59Xk-gxRV3veeKAu4vGgHrOSfzYW8O-47Mpf6sTp70A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/invoices/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"invoices",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Report Management",
+					"item": [
+						{
+							"name": "Admin, Manager get report 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQzODMxNjY5LCJleHAiOjE1NDQ0MzY0Njl9.gGNlf0cRUjfggi-BlDZcJLEvyIGlj3J8GEfE-9sfof_pKct3Rxbjp1ALVAuTj8EDFFOW-7s9HOcU9sbJMMsHxQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\t\n\t\"length\": 5,\n\t\"start\": \"2018-01-30 06:52:05\",\n    \"end\": \"2018-01-30 06:52:05\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/reports/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"reports",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "JUST FOR TEST: initial 3 roles, admin account with username \"admin\" and password \"admin@gmai.com\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/default_initial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"default_initial"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

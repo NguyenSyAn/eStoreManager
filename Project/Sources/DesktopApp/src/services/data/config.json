@@ -1,0 +1,145 @@
+{
+    "default_settings": {
+        "hostname": "estoremanger.vietanhdev.com",
+        "server_port": 8080,
+        "server_protocol": "http",
+        "lang": "en"
+    },
+    "view": {
+        "about_us": {
+            "path": "about/ejs/about_us.ejs"
+        },
+        "loading": {
+            "path": "loader/ejs/loading.ejs"
+        },
+        "cashier": {
+            "path": "cashier/ejs/cashier.ejs",
+            "roles": "ROLE_CASHIER ROLE_MANAGER ROLE_ADMIN"
+        },
+        "employees": {
+            "path": "employees/ejs/employees.ejs",
+            "roles": "ROLE_ADMIN"
+        },
+        "add_employee": {
+            "path": "employees/ejs/add_employee.ejs",
+            "roles": "ROLE_ADMIN"
+        },
+        "edit_employee": {
+            "path": "employees/ejs/edit_employee.ejs",
+            "roles": "ROLE_ADMIN"
+        },
+        "login": {
+            "path": "login/ejs/login.ejs"
+        },
+        "preferences": {
+            "path": "preferences/ejs/preference.ejs"
+        },
+        "welcome": {
+            "path": "welcome/ejs/welcome.ejs",
+            "roles": "ROLE_CASHIER ROLE_MANAGER ROLE_ADMIN"
+        },
+        "password_input": {
+            "path": "password_input/ejs/password_input.ejs"
+        },
+        "customers": {
+            "path": "customers/ejs/customers.ejs",
+            "roles": "ROLE_ADMIN ROLE_CASHIER"
+        },
+        "add_customer": {
+            "path": "customers/ejs/add_customer.ejs",
+            "roles": "ROLE_ADMIN ROLE_CASHIER"
+        },
+        "edit_customer": {
+            "path": "customers/ejs/edit_customer.ejs",
+            "roles": "ROLE_ADMIN ROLE_CASHIER"
+        },
+        "suppliers": {
+            "path": "suppliers/ejs/suppliers.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "add_supplier": {
+            "path": "suppliers/ejs/add_supplier.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "edit_supplier": {
+            "path": "suppliers/ejs/edit_supplier.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "invoices": {
+            "path": "invoices/ejs/invoices.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "add_invoice": {
+            "path": "invoices/ejs/add_invoice.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "edit_invoice": {
+            "path": "invoices/ejs/edit_invoice.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "products": {
+            "path": "products/ejs/products.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "add_product": {
+            "path": "products/ejs/add_product.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "edit_product": {
+            "path": "products/ejs/edit_product.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "printing": {
+            "path": "printing/ejs/printing.ejs"
+        },
+        "import_products": {
+            "path": "import_products/ejs/import_products.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "add_import_item": {
+            "path": "import_products/ejs/add_import_item.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "edit_import_item": {
+            "path": "import_products/ejs/edit_import_item.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "add_import_bill": {
+            "path": "import_products/ejs/add_import_bill.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "view_import_bill": {
+            "path": "import_products/ejs/view_import_bill.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER"
+        },
+        "sell_bills": {
+            "path": "sell_bills/ejs/sell_bills.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER ROLE_CASHIER"
+        },
+        "view_sell_bill": {
+            "path": "sell_bills/ejs/view_sell_bill.ejs",
+            "roles": "ROLE_ADMIN ROLE_MANAGER ROLE_CASHIER"
+        },
+        "reports": {
+            "path": "reports/ejs/reports.ejs",
+            "roles": "ROLE_ADMIN"
+        }
+    },
+    "languages": [
+        {
+            "lang": "en",
+            "title": "English",
+            "file": "en.json"
+        },
+        {
+            "lang": "fr",
+            "title": "Le français",
+            "file": "fr.json"
+        }
+    ],
+    "barcode_server": {
+        "scanner_port": 4534,
+        "receiver_path": "/barcode",
+        "receiver_port": 3843
+    }
+}

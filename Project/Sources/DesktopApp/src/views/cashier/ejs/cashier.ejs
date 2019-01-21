@@ -1,0 +1,119 @@
+<%- include('../../shared/ejs/header', {title: 'Cashier'}) %>
+<link rel="stylesheet" type="text/css" href="../css/cashier.css">
+<link rel="stylesheet" href="../../../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+
+<%- include('../../shared/ejs/secondary_menu.ejs') %>
+
+<div class="container-fluid main-container">
+	<div class="row" style="padding-top: 1rem;">
+		<div class="col-sm-1">
+			<img id="btn-show-barcode-scanner" style="width: 85px; border: 1px solid #333" src="../images/barcode-scanner.jpg" alt="barcode">
+		</div>
+		<div class="col-sm-5">
+			<div class="input-group pt-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text"><%= gettext.product_id_or_barcode %></span>
+				</div>
+				<input id="inp-id-or-barcode" type="text" class="form-control" placeholder="Eg. 2234">
+				<div class="input-group-append">
+					<button id="btn-add-product" class="btn btn-warning" type="button"><%= gettext.add_product %></button>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<div class="input-group pt-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text"><%= gettext.product_search %></span>
+				</div>
+				<input id="search_form_product" type="text" placeholder="E.g: Milk" class="form-control">
+				<div class="input-group-append">
+					<button class="btn btn-success" type="button"><%= gettext.search %></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="min-height: 350px">
+		<div class="col-sm-8 mt-2">
+			<table id="product-table" class="display" width="100%"></table>
+		</div>
+		<div id="cashier-total-area" class="col-sm-4">
+			<table>
+				<tr>
+					<td>
+						<label class="total-title"><%= gettext.sub_total %></label>
+					</td>
+					<td>
+						<input id="subtotal" readonly value="0" class="total-number" type="text" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="total-title"><%= gettext.tax %></label>
+					</td>
+					<td>
+						<input id="tax" readonly value="0 %" class="total-number" type="text" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="total-title"><%= gettext.grand_total %></label>
+					</td>
+					<td>
+						<input id="grandtotal" readonly value="0" class="total-number" type="text" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding: 2rem"></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="total-title title-sm"><%= gettext.customer_pay %></label>
+					</td>
+					<td>
+						<input id="customer-give" class="total-number" type="number" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="total-title title-sm"><%= gettext.give_back_to_customer %></label>
+					</td>
+					<td>
+						<input id="customer-take-back" value="0" readonly class="total-number" type="text" class="form-control">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid" style="position:fixed; bottom: 0; left: 0;">
+	<div class="row" style="padding: 1rem; background: ghostwhite">
+		<div class="col-sm-2">
+			<p><b><%= gettext.employee %>:</b> <span id="logged-in-user"></span></p>
+			<p><b><%= gettext.time %>:</b> <span id="clock"></span></p>
+		</div>
+		<div class="col-sm-4">
+			<p><b><%= gettext.customer %>:</b> <span id="customer-name">New Customer</span>
+				- <b><%= gettext.id %>:</b> <span id="customer-id">xxxx</span>
+			</p>
+			<div class="input-group">
+			<input id="inp-customer-id" type="text" class="form-control" placeholder="CustomerID" aria-label="CustomerID" aria-describedby="basic-addon2">
+				<div class="input-group-append">
+					<button id="btn-add-customer" class="btn btn-primary" type="button"><%= gettext.add %></button>
+					<button id="btn-new-customer" class="btn btn-success" type="button"><%= gettext.new %></button>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4 offset-sm-2">
+			<button style="font-size: 1.1rem; display:none" id="print-order" class="btn btn-lg btn-warning btn-super-lg"><%= gettext.print_receipt %></button>
+			<button style="font-size: 1.1rem" id="complete-order" class="btn btn-lg btn-success btn-super-lg"><%= gettext.complete_f9 %></button>
+			<button style="font-size: 1.1rem" id="discard" class="btn btn-lg btn-danger btn-super-lg"><%= gettext.discard %></button>
+		</div>
+	</div>
+</div>
+
+<script src="../js/cashier.js"> </script>
+
+<%- include('../../shared/ejs/footer') %>
